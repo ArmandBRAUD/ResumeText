@@ -1,0 +1,29 @@
+# Environnement virtuel
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Fichiers de configuration de l'IDE
+.idea/
+.vscode/
+
+# Fichiers de log
+*.log
+
+# Fichiers de tests temporaires
+*.cover
+*.hypothesis/
+
+# Fichiers générés par des outils externes
+*.csv
+*.tsv
+*.db
+*.sqlite
+
+# Fichiers de configurations de build
+*.egg-info/
+dist/
+build/
+*.bak
