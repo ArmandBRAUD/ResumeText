@@ -1,93 +1,105 @@
-# ResumeText
+API de Résumé de Texte avec Flask et React
 
-**ResumeText** est un projet Python conçu pour réaliser des résumés automatiques de textes à l'aide de modèles de traitement du langage naturel. Il utilise des techniques de résumé extractif et abstrait pour condenser des textes tout en préservant leurs informations essentielles.
+Ce projet permet de générer un résumé automatique de texte en utilisant Flask pour l'API backend et React pour le frontend. Il utilise le modèle mT5_multilingual_XLSum de Hugging Face pour effectuer le résumé.
 
-## Installation
+📌 Prérequis
 
-### Prérequis
+Avant de commencer, assure-toi d'avoir installé :
 
-Assurez-vous que Python 3.x est installé sur votre machine. Vous pouvez vérifier cela avec :
+Python 3.x
 
-```bash
-python --version
-Configuration de l'environnement virtuel
-Il est recommandé de créer un environnement virtuel afin d'isoler les dépendances du projet. Pour ce faire :
+Node.js (avec npm ou yarn)
 
+pip pour installer les dépendances Python
 
-# Créer un environnement virtuel
+git (optionnel, mais recommandé)
+
+⚙️ Installation du Backend (API Flask)
+
+Cloner le projet :
+
+git clone https://github.com/ton-repo/text-summarizer.git
+cd text-summarizer
+
+Créer un environnement virtuel (optionnel mais recommandé) :
+
 python -m venv venv
+source venv/bin/activate  # Sur Windows: venv\Scripts\activate
 
-# Activer l'environnement virtuel
-# Sous Windows :
-.\venv\Scripts\activate
-# Sous Mac/Linux :
-source venv/bin/activate
-Installation des dépendances
-Avec l'environnement virtuel activé, installez les dépendances nécessaires en exécutant :
-
+Installer les dépendances du backend :
 
 pip install -r requirements.txt
-Cela installera toutes les bibliothèques requises (comme spaCy, transformers, sumy, etc.) pour le traitement du langage naturel.
 
-Utilisation
-Exécution du script de résumé
-Le fichier test_summarizer.py propose un exemple de script qui utilise deux approches de résumé : Sumy (LSA) et mT5 (Transformers).
+Lancer l'API Flask :
 
-Pour exécuter le script :
+python app.py
 
+L'API tourne maintenant sur : http://localhost:5000/summarize
 
-python test_summarizer.py
-Le script génère un résumé basé sur les modèles configurés. Vous pouvez remplacer le texte par défaut en modifiant la variable texte dans ce fichier.
+🌍 Installation et Lancement du Frontend (React)
 
-Personnalisation du texte à résumer
-Pour adapter le texte à résumer, éditez la variable texte dans test_summarizer.py :
+Accéder au dossier du frontend :
 
-python
-Copier
-Modifier
-texte = """Votre texte personnalisé ici"""
-Après modification, relancez le script pour obtenir le résumé adapté.
+cd frontend
 
-Paramétrage du modèle mT5
-Le modèle mT5 vous permet de définir la longueur du résumé grâce aux paramètres max_length et min_length. Par exemple, pour un résumé compris entre 50 et 100 mots :
+Installer les dépendances :
 
-python
-Copier
-Modifier
-resume = summarizer(texte, max_length=100, min_length=50, do_sample=False)
-Utilisation de Sumy (LSA)
-Si vous préférez l'approche basée sur Sumy (LSA) pour un résumé sémantique, utilisez la fonction resumer_sumy() :
+npm install  # ou yarn install
 
-python
-Copier
-Modifier
-print(resumer_sumy(texte, nb_phrases=2))
-Ceci génère un résumé composé de 2 phrases principales, sélectionnées via l'analyse sémantique.
+Lancer le serveur React :
 
-Exemple de texte à résumer
-Voici un exemple de texte pour tester le projet :
+npm start  # ou yarn start
 
-plaintext
-Copier
-Modifier
-L'intelligence artificielle est un domaine en pleine expansion qui révolutionne de nombreux secteurs comme la santé, 
-les finances et les transports. Grâce aux algorithmes de machine learning, les entreprises peuvent automatiser des tâches, 
-analyser des données massives et améliorer leurs prises de décisions. Toutefois, cette avancée technologique soulève aussi 
-des questions éthiques et des défis liés à la confidentialité et à la sécurité des informations personnelles.
-Contribuer
-Pour contribuer à ce projet :
+Accéder à l'application web :
+📍 http://localhost:3000/
 
-Forkez ce projet.
-Créez une branche pour votre fonctionnalité :
+🔥 Comment Utiliser ?
 
-git checkout -b feature/ma-fonctionnalite
-Effectuez vos modifications et committez-les :
+Entrer un texte dans l'interface web.
 
-git commit -am 'Ajout de fonctionnalité'
-Poussez votre branche :
+Définir la longueur minimale et maximale du résumé (optionnel).
 
-git push origin feature/ma-fonctionnalite
-Créez une pull request.
-Auteurs Armand BRAUD - Créateur et développeur principal
+Cliquer sur "Générer le résumé".
 
-Ce fichier est entièrement contenu dans un seul document et présente une structure uniforme et claire.
+Voir le résumé généré.
+
+🛠 Problèmes Courants et Solutions
+
+❌ Erreur CORS
+
+Si tu as une erreur de connexion entre le frontend et le backend, ajoute cette ligne dans app.py (normalement déjà fait) :
+
+from flask_cors import CORS
+CORS(app)
+
+❌ Problème de Modèle
+
+Si le modèle de Hugging Face ne se charge pas correctement, essaie de le retélécharger :
+
+pip uninstall transformers
+pip install transformers
+
+❌ API Inaccessible depuis React
+
+Vérifie que l'API tourne bien sur localhost:5000 et que l'URL utilisée dans le frontend correspond à celle de l'API.
+
+🐝 Fichiers Importants
+
+app.py → API Flask
+
+requirements.txt → Dépendances Python
+
+frontend/ → Code source React
+
+README.md → Ce fichier 📚
+
+🎯 Améliorations Possibles
+
+Permettre de choisir entre plusieurs modèles de résumé.
+
+Ajouter une gestion des erreurs plus avancée.
+
+Déployer l'API et le frontend en ligne (par exemple avec Render, Vercel, Heroku).
+
+💡 Félicitations ! 🎉 Maintenant, tu peux utiliser ton propre service de résumé de texte ! 🚀
+
