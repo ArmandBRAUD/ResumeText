@@ -18,37 +18,29 @@ git (optionnel, mais recommandé)
 
 Cloner le projet :
 
-git clone https://github.com/ton-repo/text-summarizer.git
-cd text-summarizer
-
+    git clone https://github.com/ton-repo/text-summarizer.git
+    cd text-summarizer
 Créer un environnement virtuel (optionnel mais recommandé) :
-
-python -m venv venv
-source venv/bin/activate  # Sur Windows: venv\Scripts\activate
-
+    python -m venv venv
+    source venv/bin/activate  # Sur Windows: venv\Scripts\activate
+    
 Installer les dépendances du backend :
-
-pip install -r requirements.txt
-
+    pip install -r requirements.txt
+    
 Lancer l'API Flask :
-
-python app.py
-
+    python app.py
 L'API tourne maintenant sur : http://localhost:5000/summarize
 
 🌍 Installation et Lancement du Frontend (React)
 
 Accéder au dossier du frontend :
-
-cd frontend
-
+    cd frontend
+    
 Installer les dépendances :
-
-npm install  # ou yarn install
-
+    npm install  # ou yarn install
+    
 Lancer le serveur React :
-
-npm start  # ou yarn start
+    npm start  # ou yarn start
 
 Accéder à l'application web :
 📍 http://localhost:3000/
@@ -56,21 +48,10 @@ Accéder à l'application web :
 🔥 Comment Utiliser ?
 
 Entrer un texte dans l'interface web.
-
 Définir la longueur minimale et maximale du résumé (optionnel).
-
 Cliquer sur "Générer le résumé".
 
-Voir le résumé généré.
-
 🛠 Problèmes Courants et Solutions
-
-❌ Erreur CORS
-
-Si tu as une erreur de connexion entre le frontend et le backend, ajoute cette ligne dans app.py (normalement déjà fait) :
-
-from flask_cors import CORS
-CORS(app)
 
 ❌ Problème de Modèle
 
@@ -90,16 +71,3 @@ app.py → API Flask
 requirements.txt → Dépendances Python
 
 frontend/ → Code source React
-
-README.md → Ce fichier 📚
-
-🎯 Améliorations Possibles
-
-Permettre de choisir entre plusieurs modèles de résumé.
-
-Ajouter une gestion des erreurs plus avancée.
-
-Déployer l'API et le frontend en ligne (par exemple avec Render, Vercel, Heroku).
-
-💡 Félicitations ! 🎉 Maintenant, tu peux utiliser ton propre service de résumé de texte ! 🚀
-
